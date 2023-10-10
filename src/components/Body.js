@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import RestaurantCard from './RestaurantCard'
 import { useState} from 'react'
 import Shimmer from './Shimmer'
-
+import { Link } from 'react-router-dom'
 function Body() {
  const [listRestaurants, setListRestaurants] = useState([])
  const [filteredRestaurants, setFilterRestaurants] = useState([])
@@ -45,7 +45,7 @@ const fetchedData = async() => {  //live data fetching
       <button onClick={topRatedHandler}>Top rated Restaurants</button>
       <div className='restaurnt-container'>
         {filteredRestaurants.map((restaurant) =>(
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} /> 
+         <Link key={restaurant.info.id} to= {"/restaurants/" + restaurant.info.id} >  <RestaurantCard  resData={restaurant} />  </Link> 
         ))}
       </div>
       
