@@ -1,0 +1,79 @@
+.header-container {
+  border: 2px solid #000;
+  display: flex;
+}
+
+.logo-image {
+  width: 10%;
+}
+
+.body-container {
+  border: 2px solid #000;
+  padding: 20px;
+}
+
+.nav-items-container > ul {
+  margin-top: 28px;
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-items-container > ul > li {
+  padding: 6px;
+}
+
+.res-card-container {
+  background-color: #e7e7e7;
+  border: 1px solid #000;
+  border-radius: 6px;
+  width: 220px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.res-card-image {
+  border-radius: 4px;
+  width: 220px;
+  height: 175px;
+}
+
+.restaurnt-container {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.res-card-container:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px #0003;
+}
+
+.search-container {
+  margin: 10px;
+}
+
+.card-data {
+  line-height: .7;
+}
+
+.res-card-cuisines {
+  white-space: normal;
+  overflow: hidden;
+}
+
+.shimmer-container {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.shimmer-cards {
+  background-color: #e7e7e7;
+  border: 1px solid #000;
+  border-radius: 6px;
+  width: 220px;
+  height: 250px;
+  margin: 10px;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=index.9e4c6fd2.css.map */

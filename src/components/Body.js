@@ -12,8 +12,10 @@ function Body() {
   fetchedData()
 }, [])
 
+
+
 const fetchedData = async() => {  //live data fetching
-  const response = await fetch ('https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7272832&lng=77.3370089&restaurantId=32128&catalog_qa=undefined&submitAction=ENTER"')
+  const response = await fetch ("https://www.swiggy.com/dapi/restaurants/list/v5?lat=15.4929273&lng=78.4879809&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
   const json = await response.json()
   // console.log(json)
   setListRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
@@ -32,8 +34,9 @@ const fetchedData = async() => {  //live data fetching
      const filteredRestaurants = listRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()))
      setFilterRestaurants (filteredRestaurants)
   }
-
-  return listRestaurants.length === 0 ? (<Shimmer />) : (
+  // console.log(listRestaurants);
+  //listRestaurants.length === 0 ? (<Shimmer />) :
+  return  listRestaurants.length === 0 ? (<Shimmer />) : (
     <div className='body-container'>
       <div className='search-container'>
         <input type="text" value={searchText} placeholder='search restaurant' onChange={(e) => setSearchText(e.target.value)} />
@@ -45,6 +48,7 @@ const fetchedData = async() => {  //live data fetching
           <RestaurantCard key={restaurant.info.id} resData={restaurant} /> 
         ))}
       </div>
+      
     </div>
   )
 }

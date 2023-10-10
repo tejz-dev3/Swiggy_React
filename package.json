@@ -4,6 +4,7 @@
   "description": "This is swiggy clone",
   "main": "App.js",
   "scripts": {
+    "start" : "react-scripts start",
     "test": "jest",
     "url": "https://github.com/tejz-dev3/swiggy.git"
   },
