@@ -1,24 +1,14 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Shimmer from "../components/Shimmer"
-import {RESTAURANT_MENU_API} from '../assets/resourceLinks'
+import useRestaurantMenu from '../assets/useRestaurantMenu';
 
 function RestraMenu() {  
-const [restraMenu, setRestraMenu ] = useState(null)
     
    const {resId} = useParams()
-    console.log(resId)
-   useEffect(() =>{
-    fetchData()
-    },[])
-
-    const fetchData = async() =>{
-       const response =  await fetch (RESTAURANT_MENU_API + resId )
-       const json  = await response.json()
-       console.log(json)
-       setRestraMenu(json.data)
-    }
+   
+   //used custom Hook
+   const restraMenu = useRestaurantMenu(resId)
     
     if (restraMenu === null) return <Shimmer />
 
@@ -35,7 +25,7 @@ const [restraMenu, setRestraMenu ] = useState(null)
        <h5>{costForTwoMessage}</h5>
        <p>{cuisines.join(", ")}</p>
        {itemCards.map((items) => (
-        <li key={itemCards?.card?.info?.id}>{items?.card?.info?.name} - {items?.card?.info?.price}</li>
+        <li key={items?.card?.info?.id}>{items?.card?.info?.name} - {items?.card?.info?.price}</li>
        ))}
 
     </div>
