@@ -13,10 +13,10 @@ function RestaurantCard(props) {
   } = resData?.info
 
   return (
-    <div className='res-card-container'>
+    <div className='p-4 '>
         <img src={ CARD_URL + cloudinaryImageId }
          alt="res-card-image"
-         className='res-card-image' />
+         className='h-[200px] w-[250px] rounded-lg ' />
       <div className='card-data'>
          <h5>{name}</h5>
          <h6 className='res-card-cuisines'>{cuisines.join(",")}</h6>

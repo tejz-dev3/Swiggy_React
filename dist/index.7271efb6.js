@@ -33516,9 +33516,8 @@ function Body() {
     const fetchedData = async ()=>{
         const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=15.4929273&lng=78.4879809&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await response.json();
-        setListRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        // setListRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        setFilterRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilterRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
     const topRatedHandler = ()=>{
         const filteredList = listRestaurants.filter((res)=>res.info.avgRating > 4);
@@ -33533,13 +33532,13 @@ function Body() {
         children: "Looks like You are Offline! Please Check Your Internet Connection"
     }, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 44,
+        lineNumber: 42,
         columnNumber: 10
     }, this);
     //listRestaurants.length === 0  ?  (<Shimmer />) :
     return listRestaurants.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _shimmerDefault.default), {}, void 0, false, {
         fileName: "src/components/Body.js",
-        lineNumber: 48,
+        lineNumber: 45,
         columnNumber: 45
     }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
@@ -33554,7 +33553,7 @@ function Body() {
                         onChange: (e)=>setSearchText(e.target.value)
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 52,
+                        lineNumber: 49,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -33563,7 +33562,7 @@ function Body() {
                         children: "search"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 53,
+                        lineNumber: 50,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -33572,17 +33571,17 @@ function Body() {
                         children: "Top rated Restaurants"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 54,
+                        lineNumber: 51,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Body.js",
-                lineNumber: 50,
+                lineNumber: 47,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "restaurnt-container",
+                className: "flex flex-wrap p-5",
                 children: filteredRestaurants.map((restaurant)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                         to: "/restaurants/" + restaurant.info.id,
                         children: [
@@ -33591,25 +33590,25 @@ function Body() {
                                 resData: restaurant
                             }, void 0, false, {
                                 fileName: "src/components/Body.js",
-                                lineNumber: 59,
+                                lineNumber: 56,
                                 columnNumber: 87
                             }, this),
                             "  "
                         ]
                     }, restaurant.info.id, true, {
                         fileName: "src/components/Body.js",
-                        lineNumber: 59,
+                        lineNumber: 56,
                         columnNumber: 10
                     }, this))
             }, void 0, false, {
                 fileName: "src/components/Body.js",
-                lineNumber: 57,
+                lineNumber: 54,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/Body.js",
-        lineNumber: 49,
+        lineNumber: 46,
         columnNumber: 5
     }, this);
 }
@@ -33645,12 +33644,12 @@ function RestaurantCard(props) {
     const { resData } = props;
     const { cloudinaryImageId, name, cuisines, areaName, costForTwo, avgRating } = resData?.info;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "res-card-container",
+        className: "p-4 ",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 src: (0, _resourceLinks.CARD_URL) + cloudinaryImageId,
                 alt: "res-card-image",
-                className: "res-card-image"
+                className: "h-[200px] w-[250px] rounded-lg "
             }, void 0, false, {
                 fileName: "src/components/RestaurantCard.js",
                 lineNumber: 17,
