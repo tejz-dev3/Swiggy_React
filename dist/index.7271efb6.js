@@ -33516,8 +33516,9 @@ function Body() {
     const fetchedData = async ()=>{
         const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=15.4929273&lng=78.4879809&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json = await response.json();
-        setListRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilterRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(json.data);
+        setListRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilterRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants || json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
     const topRatedHandler = ()=>{
         const filteredList = listRestaurants.filter((res)=>res.info.avgRating > 4);
@@ -33543,10 +33544,13 @@ function Body() {
     }, this) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "flex border-solid p-4 bg-cover bg-center h-45 w-full items-center justify-center",
+                className: "flex border-solid p-4  bg-center h-48 bg-cover w-full items-center justify-center bg-orange-400",
+                style: {
+                    backgroundImage: `url('https://cdn.pixabay.com/photo/2016/06/26/22/45/india-1481494_640.jpg')`
+                },
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        className: " border-orange-500",
+                        className: "text-white bg-transparent border-gray-50",
                         type: "text",
                         value: searchText,
                         placeholder: "search restaurant",
@@ -33554,11 +33558,11 @@ function Body() {
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
                         lineNumber: 49,
-                        columnNumber: 9
+                        columnNumber: 10
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         onClick: searchHandler,
-                        className: "m-7 border-solid border-orange-500",
+                        className: " text-white m-7 border-solid  bg-transparent",
                         children: "search"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
@@ -33567,7 +33571,7 @@ function Body() {
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         onClick: topRatedHandler,
-                        className: "border-solid  border-orange-500",
+                        className: " text-white border-solid  ",
                         children: "Top rated Restaurants"
                     }, void 0, false, {
                         fileName: "src/components/Body.js",
@@ -33581,7 +33585,7 @@ function Body() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "flex flex-wrap p-5",
+                className: "flex flex-wrap p-7 ml-5 ",
                 children: filteredRestaurants.map((restaurant)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                         to: "/restaurants/" + restaurant.info.id,
                         children: [
@@ -33644,21 +33648,22 @@ function RestaurantCard(props) {
     const { resData } = props;
     const { cloudinaryImageId, name, cuisines, areaName, costForTwo, avgRating } = resData?.info;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "p-4 ",
+        className: "m-6 h-1/4 flex flex-col w-17",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                 src: (0, _resourceLinks.CARD_URL) + cloudinaryImageId,
                 alt: "res-card-image",
-                className: "h-[200px] w-[250px] rounded-lg "
+                className: "h-[230px] w-[290px] rounded-lg "
             }, void 0, false, {
                 fileName: "src/components/RestaurantCard.js",
                 lineNumber: 17,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "card-data",
+                className: "p-2 flex-wrap",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                        className: " text-lg font-bold  ",
                         children: name
                     }, void 0, false, {
                         fileName: "src/components/RestaurantCard.js",
@@ -33666,33 +33671,36 @@ function RestaurantCard(props) {
                         columnNumber: 10
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
-                        className: "res-card-cuisines",
-                        children: cuisines.join(",")
+                        className: "font-mono text-xs",
+                        children: areaName
                     }, void 0, false, {
                         fileName: "src/components/RestaurantCard.js",
                         lineNumber: 22,
                         columnNumber: 10
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
-                        children: areaName
+                        className: "font-mono text-sm font-semibold",
+                        children: costForTwo
                     }, void 0, false, {
                         fileName: "src/components/RestaurantCard.js",
                         lineNumber: 23,
                         columnNumber: 10
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
-                        children: costForTwo
-                    }, void 0, false, {
-                        fileName: "src/components/RestaurantCard.js",
-                        lineNumber: 24,
-                        columnNumber: 10
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                        className: "text-xs font-bold",
                         children: [
                             "rating : ",
                             avgRating
                         ]
                     }, void 0, true, {
+                        fileName: "src/components/RestaurantCard.js",
+                        lineNumber: 24,
+                        columnNumber: 10
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+                        className: "font-mono text-xs font-semibold",
+                        children: cuisines.join(",")
+                    }, void 0, false, {
                         fileName: "src/components/RestaurantCard.js",
                         lineNumber: 25,
                         columnNumber: 10
